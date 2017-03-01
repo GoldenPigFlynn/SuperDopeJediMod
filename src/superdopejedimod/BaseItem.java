@@ -1,19 +1,26 @@
 package superdopesquad.superdopejedimod;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import superdopesquad.superdopejedimod.faction.ClassAwareInterface;
+import superdopesquad.superdopejedimod.faction.ClassInfo;
 
 
-public abstract class BaseItem extends Item implements SuperDopeObject {
+public abstract class BaseItem extends Item implements SuperDopeObject, ClassAwareInterface {
 
 	protected String name = "";
 	
@@ -38,6 +45,7 @@ public abstract class BaseItem extends Item implements SuperDopeObject {
 	}
 	
 	
+	@Override
 	public void registerObject() {
 		
 		// Register the item with the game.
@@ -46,6 +54,7 @@ public abstract class BaseItem extends Item implements SuperDopeObject {
 	}
 	
 	
+	@Override
 	public void registerRecipe() {
 		
 		// Example of registering a crafttable recipe.
@@ -62,27 +71,45 @@ public abstract class BaseItem extends Item implements SuperDopeObject {
 	}
 	
 	
+	@Override
 	public void registerModel() {
 	    
 		RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
-		String location = SuperDopeJediMod.MODID + ":" + ((BaseItem) this).getName();
-		System.out.println("SuperDopeSquad: registering item: " + location);
-	    //renderItem.getItemModelMesher().register(this, 0, new ModelResourceLocation(location, "inventory"));
-	    renderItem.getItemModelMesher().register(this, 0, new ModelResourceLocation(location));
+	    renderItem.getItemModelMesher().register(this, 0, new ModelResourceLocation(SuperDopeJediMod.MODID + ":" + this.getName(), "inventory"));
 	}
 	
 	
-	public void generateEnd(World world, Random random, int i, int j) {
-		return;
+	@Override
+    public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
+	    	
+		SuperDopeJediMod.classManager.onUpdateHandlerClassAware(stack, world, entity, itemSlot, isSelected);
 	}
 	
 	
-	public void generateSurface(World world, Random random, int i, int j) {
-		return;
+	@Override
+	public List<ClassInfo> GetFriendlyClasses() {
+
+		return new ArrayList<ClassInfo>();
 	}
-	
-	
-	public void generateNether(World world, Random random, int i, int j) {
-		return;
+
+
+	@Override
+	public List<ClassInfo> GetUnfriendlyClasses() {
+		
+		return new ArrayList<ClassInfo>();
 	}
+
+
+	@Override
+	public boolean IsUseFriendlyOnly() {
+		
+		return false;
+	}
+
+
+	@Override
+	public boolean IsUseUnfriendlyBanned() {
+		
+		return false;
+	}	
 }

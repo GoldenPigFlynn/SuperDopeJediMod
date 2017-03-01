@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import superdopesquad.superdopejedimod.weapon.BaseMeleeWeapon;
 
 
 
@@ -26,6 +27,8 @@ public class GaffiStick extends BaseMeleeWeapon {
     	ItemStack stickStack = new ItemStack(Items.STICK);
     	ItemStack ironIngotStack = new ItemStack(Items.IRON_INGOT);
     	GameRegistry.addRecipe(new ItemStack(this), "xx", " y", " x", 'x', ironIngotStack, 'y', stickStack);
+    	
+    	// Smelting a GaffiStick will create 1 IronIngot.
+    	GameRegistry.addSmelting(this, ironIngotStack, 1.0F);		
 	}
-	
 }
