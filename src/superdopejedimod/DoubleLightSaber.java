@@ -6,6 +6,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import superdopesquad.superdopejedimod.weapon.BaseMeleeWeapon;
 
 public class DoubleLightSaber extends BaseMeleeWeapon {
 	
@@ -55,6 +56,38 @@ public void registerRecipe() {
 			ItemStack purplePowerCrystalStack = new ItemStack(SuperDopeJediMod.purplePowerCrystal);
     		ItemStack ironIngotStack = new ItemStack(Items.IRON_INGOT);
     		GameRegistry.addRecipe(new ItemStack(this), "x", "z", "x", 'x', purplePowerCrystalStack, 'z', ironIngotStack);
+		}
+		
+		if (this.color == "Red") {
+			
+			// Recipe for creating a redLightSaber.
+			ItemStack redLightSaberStack = new ItemStack(SuperDopeJediMod.lightSaberRed);
+    		ItemStack redPowerCrystalStack = new ItemStack(SuperDopeJediMod.redPowerCrystal);
+    		GameRegistry.addRecipe(new ItemStack(this), "x", "z", 'x', redLightSaberStack, 'z', redPowerCrystalStack);
+		}
+		
+		if (this.color == "Blue") {
+			
+			// Recipe for creating a redLightSaber.
+			ItemStack blueLightSaberStack = new ItemStack(SuperDopeJediMod.lightSaberBlue);
+    		ItemStack bluePowerCrystalStack = new ItemStack(SuperDopeJediMod.bluePowerCrystal);
+    		GameRegistry.addRecipe(new ItemStack(this), "x", "z", 'x', blueLightSaberStack, 'z', bluePowerCrystalStack);
+		}
+		
+		if (this.color == "Green") {
+			
+			// Recipe for creating a redLightSaber.
+			ItemStack greenLightSaberStack = new ItemStack(SuperDopeJediMod.lightSaberGreen);
+    		ItemStack greenPowerCrystalStack = new ItemStack(SuperDopeJediMod.greenPowerCrystal);
+    		GameRegistry.addRecipe(new ItemStack(this), "x", "z", 'x', greenLightSaberStack, 'z', greenPowerCrystalStack);
+		}
+		
+		if (this.color == "Purple") {
+			
+			// Recipe for creating a redLightSaber.
+			ItemStack purpleLightSaberStack = new ItemStack(SuperDopeJediMod.lightSaberPurple);
+    		ItemStack purplePowerCrystalStack = new ItemStack(SuperDopeJediMod.purplePowerCrystal);
+    		GameRegistry.addRecipe(new ItemStack(this), "x", "z", 'x', purpleLightSaberStack, 'z', purplePowerCrystalStack);
 		}
 	}
 }

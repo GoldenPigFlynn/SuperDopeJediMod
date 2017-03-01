@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-
+import superdopesquad.superdopejedimod.weapon.BaseMeleeWeapon;
 
 
 public class MandalorianIronSword extends BaseMeleeWeapon {
@@ -24,5 +24,4 @@ public class MandalorianIronSword extends BaseMeleeWeapon {
     	ItemStack mandalorianIronIngotStack = new ItemStack(SuperDopeJediMod.mandalorianIronIngot);
     	GameRegistry.addRecipe(new ItemStack(this), " x", " x", " y", 'x', mandalorianIronIngotStack, 'y', stickStack);
 	}
-	
 }
